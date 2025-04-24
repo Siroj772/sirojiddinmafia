@@ -4,6 +4,8 @@ from flask import Flask, request
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from collections import Counter
 from fpdf import FPDF
+from urllib.parse import quote as url_quote
+
 import random
 import os
 
