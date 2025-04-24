@@ -378,24 +378,22 @@ def show_alive_players_and_roles():
 
     bot.send_message(chat_id=group_chat_id, text="📋 Tirik o‘yinchilar:\n" + "\n".join(alive_names))
     send_announce_roles(bot)
-# === Webhook va Flask app ===
+# === Webhook endpoint ===
 @app.route("/webhook", methods=["POST"])
 def webhook():
     data = request.json
     print("Webhook kelib tushdi:", data)
     return "OK", 200
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-@app.route("/")
+# === Asosiy sahifa ===
+@app.route("/", methods=["GET", "HEAD"])
 def home():
-    return "Mafia Bot Ishlamoqda ✅"
+    return "Mafia Bot Ishlamoqda ✅", 200
 
-if __name__ == '__main__':
+# === Serverni ishga tushirish ===
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 # Handlerlar qo'shish
 dispatcher.add_handler(CommandHandler("adminpassword", check_password))  # Admin parolni tekshirish
