@@ -1,4 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from flask import Flask, request
+
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from collections import Counter
 from fpdf import FPDF
@@ -11,6 +13,7 @@ SUPER_ADMIN_ID = 6058698891  # Adminning ID
 password = "Sirojiddin1221"  # Admin parol
 
 # O'yinchilar, rollar va o'yin holati
+app = Flask(__name__)
 players = []
 roles = {}
 player_stats = {}
@@ -376,9 +379,13 @@ def show_alive_players_and_roles():
 # === Webhook va Flask app ===
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    update = Update.de_json(request.get_json(force=True), bot)
-    dispatcher.process_update(update)
-    return "ok"
+    data = request.json
+    print("Webhook kelib tushdi:", data)
+    return "OK", 200
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 @app.route("/")
 def home():
