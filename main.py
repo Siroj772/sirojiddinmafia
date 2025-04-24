@@ -6,9 +6,9 @@ import random
 import os
 
 # Bot tokeni
-TOKEN = "YOUR_BOT_TOKEN"
-SUPER_ADMIN_ID = 123456789  # Adminning ID
-password = "adminpassword"  # Admin parol
+TOKEN = "7525665590:AAEZhghUoF8y1jNPMkigogBGBE05l3orxPo"
+SUPER_ADMIN_ID = 6058698891  # Adminning ID
+password = "Sirojiddin1221"  # Admin parol
 
 # O'yinchilar, rollar va o'yin holati
 players = []
