@@ -1,21 +1,21 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from flask import Flask, request
-
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from collections import Counter
 from fpdf import FPDF
 from urllib.parse import quote as url_quote
-
+import telebot
 import random
 import os
 
 # Bot tokeni
-TOKEN = "7525665590:AAEZhghUoF8y1jNPMkigogBGBE05l3orxPo"
+TOKEN = os.getenv("TOKEN") or "7525665590:AAEZhghUoF8y1jNPMkigogBGBE05l3orxPo"
+bot = telebot.TeleBot(TOKEN)
 SUPER_ADMIN_ID = 6058698891  # Adminning ID
 password = "Sirojiddin1221"  # Admin parol
-
-# O'yinchilar, rollar va o'yin holati
 app = Flask(__name__)
+# O'yinchilar, rollar va o'yin holati
+
 players = []
 roles = {}
 player_stats = {}
